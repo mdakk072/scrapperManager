@@ -104,8 +104,8 @@ class ScraperManager:
         try:
             monitoring_data = json.loads(received)
             self.scrapers[unique_id].monitoring_data = monitoring_data
-            with open(f"monitoring_data_{unique_id}.json", "w") as file:
-                json.dump(monitoring_data, file, indent=4)
+            #with open(f"monitoring_data_{unique_id}.json", "w") as file:
+            #    json.dump(monitoring_data, file, indent=4)
         except json.JSONDecodeError:
             print(f">> Failed to decode JSON for [{unique_id}]: {received[:30]}")
 
