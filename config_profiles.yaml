@@ -1,0 +1,7 @@
+rent_Montreal:
+  config_file: "/home/mdakk072/projects/coreScraperProject/kijijiCarScraper/config/rent_Montreal.yaml"
+  interval: 1  # minutes
+
+rent_Levis :
+  config_file: "/home/mdakk072/projects/coreScraperProject/kijijiCarScraper/config/rent_Levis.yaml"
+  interval: 1  #  4 minutes
