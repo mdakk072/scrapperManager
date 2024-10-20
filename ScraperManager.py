@@ -1,7 +1,5 @@
 import os  # Operating system interactions
-import subprocess  # Running external processes
 import time  # Time operations
-import yaml  # YAML file handling
 import uuid  # Generating unique IDs
 import json  # JSON handling
 from datetime import datetime  # Date and time operations
@@ -12,22 +10,21 @@ from utils import Utils  # Inter-process communication
 
 class ScraperManager:
     
-    def __init__(self, base_path):
+    def __init__(self, base_path,profiles):
         self.base_path = base_path
         self.venv_python = os.path.join(base_path, 'venv', 'bin', 'python')
         self.scrapers = {}
         self.config_profiles = {}
         self.ipc = IPC()
-        
-        raw_profiles = Utils.read_yaml("config_profiles.yaml")
+        raw_profiles = profiles
         for profile_name, profile_data in raw_profiles.items():
             self.config_profiles[profile_name] = Profile(
-                profile_data['config_file'],
-                profile_data['interval'],
-                profile_data.get('last_exec'),
-                profile_data.get('unique_id', str(uuid.uuid4())),
-                profile_data.get('publish_address'),
-                profile_data.get('running', False)
+                profile_data.config_file,
+                profile_data.interval,
+                None,
+                str(uuid.uuid4()),
+                None,
+                False
             )
 
     def start_scraper(self, profile_name):
@@ -112,8 +109,3 @@ class ScraperManager:
     def run(self):
         """Start the main scheduling loop."""
         self.schedule_scrapers()
-
-if __name__ == "__main__":
-    base_path = "/home/mdakk072/projects/coreScraperProject/kijijiCarScraper"
-    manager = ScraperManager(base_path)
-    manager.run()
