@@ -1,0 +1,22 @@
+profiles:
+  avito_journalier:
+    config_file: "/home/mdakk072/projects/coreScraperProject/avitoScraper/config/config_journalier.yaml"
+    interval: 480  # 8 hours in minutes
+
+  avito_location:
+    config_file: "/home/mdakk072/projects/coreScraperProject/avitoScraper/config/config_location.yaml"
+    interval:  240  # 4 hours in minutes
+
+  avito_vente:
+    config_file: "/home/mdakk072/projects/coreScraperProject/avitoScraper/config/config_vente.yaml"
+    interval: 360  # 6 hours in minutes
+
+base_path: "/home/mdakk072/projects/coreScraperProject/avitoScraper"
+publish_host: localhost
+publish_port: 7578
+request_port: 7577
+response_port: 7576
+log_path: "app.log"
+log_level: Debug
+log_console: True
+log_file: True
