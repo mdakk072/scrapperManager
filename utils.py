@@ -72,7 +72,7 @@ class Utils:
         # Create file handler if enabled
         if file_logging:
             logs_folder = os.path.dirname(file_path)
-            if not os.path.exists(logs_folder):
+            if  logs_folder  and not os.path.exists(logs_folder):
                 os.makedirs(logs_folder)
             f_handler = logging.FileHandler(file_path)
             f_handler.setFormatter(formatter)
@@ -184,7 +184,7 @@ class Utils:
             return None
 
     @staticmethod
-    def write_json(data, file_path):
+    def write_json(file_path,data ):
         """
         Write data to a JSON file.
 
