@@ -26,7 +26,7 @@ class IPC:
         sub_socket.setsockopt_string(zmq.SUBSCRIBE, topic)
         self.sockets[name] = sub_socket
 
-    def init_requester(self, name, address):
+    def init_requester(self, address):
         """
         Initialize the requester.
         :param name: The name/ID of the requester.
@@ -34,7 +34,7 @@ class IPC:
         """
         req_socket = self.context.socket(zmq.REQ)
         req_socket.connect(address)
-        self.sockets[name] = req_socket
+        self.sockets['req'] = req_socket
 
     def init_replier(self, address):
         """
